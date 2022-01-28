@@ -1,31 +1,26 @@
 #include <iostream>
+#include <unordered_set>
+
 using namespace std;
 
-
-void frequency(int arr[], int n)
+int intersection(int a[], int b[], int m, int n)
 {
+    int res=0;
+    unordered_set<int>s_a(a, a+m); //It also has inserted all the array a[] elements to the set
     for(int i=0; i<n; i++)
     {
-        bool flag=false;
-        for(int j=0; j<i; j++)
+        if(s_a.find(b[i])!=s_a.end())
         {
-            if(arr[i]==arr[j])
-                flag=true;
+            res++;
+            s_a.erase(b[i]);
         }
-        if(flag==true)
-            continue;
-        int freq=1;
-        for(int j=i+1; j<n; j++)
-        {
-            if(arr[i]==arr[j])
-                freq++;
-        }
-        cout<<arr[i]<<" "<<freq<<endl;
     }
+    return res;
 }
 int main()
 {
-    int arr[]={324, 213,324, 123, 213};
-    frequency(arr, 5);
+    int a[]={12, 32, 45, 12};
+    int b[]={12, 43, 45};
+    cout<<"The number of common elements on both the sets are: "<<intersection(a, b, 4, 3)<<endl;
     return 0;
 }
