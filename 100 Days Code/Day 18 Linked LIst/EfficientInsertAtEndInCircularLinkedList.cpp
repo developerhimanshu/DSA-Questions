@@ -22,13 +22,13 @@ Node *insertEnd(Node *head, int data)
     }
     else
     {
-        newNode->next = head->next;
+        newNode->next = head->next;  //Firstly Insert node between head Node and its next Node
         head->next = newNode;
-        int x = head->data;
+        int x = head->data;     // Then swap the head node and the inserted node's data
         head->data = newNode->data;
         newNode->data = x;
 
-        return newNode;
+        return newNode; //  Then the newNode will be returned as head
     }
 }
 
