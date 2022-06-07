@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-bool mycmp(pair<int, int>a, pair<int, int>b) {
+bool mycmp(pair<int, int>a, pair<int, int>b) {   //This comparator is for sorting the pairs in the value/weight ratio
 	double r1 = (double)a.second / a.first;
 	double r2 = (double)b.second / b.first;
 	return r1 > r2;
@@ -24,9 +24,16 @@ int fKnapS(vector<pair<int, int>>things, int weight) {
 }
 int main()
 {
-	vector<pair<int, int>>arr = {make_pair(30, 120), make_pair(20, 100), make_pair(10, 60)};
+    int n;
+    cin>>n;
+    vector<pair<int, int>>arr;
+    while(n--){
+        int weight, value;
+        cin>>weight>>value;
+        arr.push_back(make_pair(weight,value));
+    }
 
-	int n = 3, W = 50;
+	int W = 50;
 
 	cout << fKnapS(arr, W);
 
