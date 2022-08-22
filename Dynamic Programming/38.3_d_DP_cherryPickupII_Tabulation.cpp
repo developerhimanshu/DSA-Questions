@@ -41,6 +41,7 @@ public:
 
 int main()
 {
-
+    Solution s;
+    cout<<s.cherryPickup();
     return 0;
 }
