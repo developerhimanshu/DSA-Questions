@@ -30,7 +30,7 @@ public:
         int sum = 0;
         for(auto x:nums)
             sum+=x;
-        if(sum-target < 0 || (sum-target) % 2)return 0;
+        if(sum-target < 0 || (sum-target) % 2)return 0;  /*   s1-s2 = target  s1+s2 = s   =>s1 = (s-target)/2  */
         vector<vector<int>>dp(n, vector<int>((sum-target)/2+1, -1));
         return fn(n-1, (sum-target)/2, nums, dp);
     }
