@@ -20,19 +20,19 @@ public:
     //     return dp[ind][prev+1]=len;
     // }
     int lengthOfLIS(vector<int>& nums) {
-        int n = nums.size();
-        vector<vector<int>>dp(n+1, vector<int>(n+1, 0));
-        for(int ind = n-1; ind >=0; ind--){
-            for(int prev = ind -1; prev>=-1; prev--){
-                int res = dp[ind+1][prev+1];
-                if(prev == -1 || nums[ind]>nums[prev]){
-                    res = max(res, 1+dp[ind+1][ind+1]);
+      int n = nums.size();
+        vector<vector<int>>dp(n+2, vector<int>(n+1, 0));
+        for(int i = n; i>=1; i--){
+            for(int prev = i-1; prev >=0; prev--){
+                int pick = -1e2;
+                if(prev==0|| nums[i-1]>nums[prev-1]){
+                    pick = 1+dp[i+1][i];
                 }
-                dp[ind][prev+1] = res;
+                int notPick = dp[i+1][prev];
+                dp[i][prev] = max(pick, notPick);
             }
         }
-      
-        return dp[0][0];
+        return dp[1][0];
     }
 };
 
