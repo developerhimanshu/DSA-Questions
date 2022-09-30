@@ -20,7 +20,7 @@ Explanation: One of the longest word chains is ["a","ba","bda","bdca"].
 
 */
 
-// This problem is the variation of LCS
+// This problem is the variation of LIS
 #include <bits/stdc++.h>
 using namespace std;
 
